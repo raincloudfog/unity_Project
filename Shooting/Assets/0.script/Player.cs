@@ -8,21 +8,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     float speed;
     float timer = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-
         Move();
         Shoot();
-        
-
     }
 
     void Move()

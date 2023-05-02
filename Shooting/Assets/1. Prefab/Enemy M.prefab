@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &450197003355255679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8876678736506353875}
+  m_Layer: 0
+  m_Name: hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8876678736506353875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450197003355255679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8774403467675948034}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3017814586720814663
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,9 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8774403467675948034}
   - component: {fileID: 3204075652277525667}
-  - component: {fileID: 319054158214821301}
   - component: {fileID: -1354891803935469240}
-  m_Layer: 0
+  - component: {fileID: 453087386258354111}
+  - component: {fileID: 8368016958961247437}
+  m_Layer: 7
   m_Name: Enemy M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +64,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1445869763505330950}
+  - {fileID: 8876678736506353875}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,20 +120,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &319054158214821301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3017814586720814663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f601d683497f498d12ae0935fa4af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firepos: {fileID: 1445869763505330950}
-  bullet: {fileID: 5998438626880849096, guid: eb829666ed500c2489796a0a31fdb6ff, type: 3}
 --- !u!50 &-1354891803935469240
 Rigidbody2D:
   serializedVersion: 4
@@ -109,7 +128,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3017814586720814663}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -122,6 +141,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &453087386258354111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3017814586720814663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99edb185562345344968f11cd9c5ca99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firepos: {fileID: 1445869763505330950}
+  bullet: {fileID: 5998438626880849096, guid: eb829666ed500c2489796a0a31fdb6ff, type: 3}
+  Item:
+  - {fileID: 3977412391894816948, guid: d6308267dce63ba42969188b692e338d, type: 3}
+  - {fileID: 3227662076743449470, guid: fa38f2c90dc77b248bef6f0421f112c0, type: 3}
+  - {fileID: 1309287825643572754, guid: ce6cb04890da35b4db553bc19719d6df, type: 3}
+  Speed: 0
+--- !u!61 &8368016958961247437
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3017814586720814663}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.5, y: 0.45833334}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &3597205614188323465
 GameObject:
   m_ObjectHideFlags: 0

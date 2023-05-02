@@ -12,10 +12,13 @@ public class Objectpool : Singleton<Objectpool>
 
     [SerializeField] GameObject[] bullet;
     [SerializeField] GameObject[] Enemybullet;
+    
 
     Queue<GameObject> pools = new Queue<GameObject>();
     Queue<GameObject> Enemybulletpools = new Queue<GameObject>();
-    Queue<GameObject> Enemypools = new Queue<GameObject>();
+    Queue<GameObject> EnemySpools = new Queue<GameObject>();
+    Queue<GameObject> EnemyMpools = new Queue<GameObject>();
+    Queue<GameObject> EnemyLpools = new Queue<GameObject>();
 
 
     private void Awake()
@@ -90,4 +93,95 @@ public class Objectpool : Singleton<Objectpool>
 
         return obj;
     }
+
+    public bool CheckEnemypoos()
+    {
+        if(EnemySpools.Count == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public void EnemyCreate()
+    {
+        GameObject obj = Instantiate(Enemys[0], transform);
+        EnemySpools.Enqueue(obj);
+    }
+    public void Enemyreturn(GameObject obj)
+    {
+        if(obj.gameObject.name == "Enemy(Clone)")
+        {
+            EnemySpools.Enqueue(obj);
+        }
+        else if(obj.gameObject.name == "Enemy M(Clone)")
+        {
+            EnemyMpools.Enqueue(obj);
+        }
+        else if (obj.gameObject.name == "Enemy L(Clone)")
+        {
+            EnemyLpools.Enqueue(obj);
+        }
+        obj.SetActive(false);
+        
+    }
+
+    public GameObject EnemyObject()
+    {
+        if (Instance.CheckEnemypoos())
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                GameObject newobj = Instantiate(Enemys[0], transform);
+                newobj.SetActive(false);
+                EnemySpools.Enqueue(newobj);
+            }
+        }
+        GameObject obj = EnemySpools.Dequeue();
+        obj.SetActive(true);
+        return obj;
+    }
+
+    public void EnemyMreturn(GameObject obj)
+    {
+        obj.SetActive(false);
+        EnemyMpools.Enqueue(obj);
+
+    }
+    public GameObject EnemyMObject()
+    {
+        if(EnemyMpools.Count == 0)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                GameObject obj2 = Instantiate(Enemys[1], transform);
+                obj2.SetActive(false);
+                EnemyMpools.Enqueue(obj2);
+            }
+        }
+        GameObject obj = EnemyMpools.Dequeue();
+        obj.SetActive(true);
+        return obj;
+    }
+
+    public void EnemyLreturn(GameObject obj)
+    {
+        obj.SetActive(false);
+        EnemyLpools.Enqueue(obj);
+    }
+    public GameObject EnemyLObject()
+    {
+        if(EnemyLpools.Count == 0)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                GameObject obj = Instantiate(Enemys[2], transform);
+                obj.SetActive(false);
+                EnemyLpools.Enqueue(obj);
+            }
+        }
+        GameObject newobj = EnemyLpools.Dequeue();
+        newobj.SetActive(true);
+        return newobj;
+    }
+
 }

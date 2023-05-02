@@ -2,28 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour , Attack
 {
     [SerializeField] Transform firepos;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject[] Item;
+
     Collider2D player;
-    protected int Hp;
-    protected int Speed;
+    protected float Hp;
+    public int Speed;
     GameObject obj;
     Vector3 pos;
     float timer = 0;
 
-    private void Start()
-    {
-        
-    }
     private void FixedUpdate()
     {
         player = Physics2D.OverlapCircle(transform.position, 10f, LayerMask.GetMask("Player"));
-        this.GetComponent<Rigidbody2D>().velocity = Vector2.down;
-        Shoot();
-
         
+        Shoot();
+        Die();
+        
+    }
+    
+    void Die()
+    {
+        if(Hp <= 0)
+        {
+            GameObject obj =  Instantiate(Item[Random.Range(0,3)], transform.position, Quaternion.identity);
+            Objectpool.Instance.Enemyreturn(gameObject);
+        }
     }
 
     void Shoot()
@@ -37,12 +44,20 @@ public class Enemy : MonoBehaviour
             obj = Objectpool.Instance.EnmeybulleObject();
             obj.transform.position = transform.position;
             obj.SetActive(true);
-            obj.transform.SetParent(null);
             pos = player.transform.position - obj.transform.position;
+            obj.GetComponent<Rigidbody2D>().velocity = pos.normalized * 3f;
+            obj.transform.SetParent(null);
+           
         }
-        obj.GetComponent<Rigidbody2D>().velocity = pos.normalized *  3f;
+        
         
         return;
     }
-    
+
+    public void Attack(float damage)
+    {
+        
+        Hp -= damage;
+        
+    }
 }

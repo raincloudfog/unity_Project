@@ -56,15 +56,22 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Vertical 2D Shooting BE4\ReadMe\Scripts\ReadmeBE4.cs" />
     <Compile Include="Assets\0.script\Player.cs" />
-    <Compile Include="Assets\0.script\Singleton.cs" />
-    <Compile Include="Assets\0.script\Objectpool.cs" />
+    <Compile Include="Assets\0.script\EnemyM.cs" />
     <Compile Include="Assets\0.script\GameManager.cs" />
+    <Compile Include="Assets\0.script\EnemyS.cs" />
     <Compile Include="Assets\0.script\Bullet.cs" />
     <Compile Include="Assets\0.script\Enemy.cs" />
+    <Compile Include="Assets\0.script\Singleton.cs" />
+    <Compile Include="Assets\EnemysponerRight.cs" />
+    <Compile Include="Assets\0.script\Item.cs" />
+    <Compile Include="Assets\EnemysponerLeft.cs" />
     <Compile Include="Assets\0.script\EnemyBullet.cs" />
     <Compile Include="Assets\0.script\enemysponer.cs" />
+    <Compile Include="Assets\0.script\Objectpool.cs" />
+    <Compile Include="Assets\0.script\Coin.cs" />
+    <Compile Include="Assets\0.script\Interface.cs" />
+    <Compile Include="Assets\Vertical 2D Shooting BE4\ReadMe\Scripts\ReadmeBE4.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
