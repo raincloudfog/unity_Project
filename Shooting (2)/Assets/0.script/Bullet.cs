@@ -55,10 +55,10 @@ public class Bullet : MonoBehaviour
             {
                 enemy.GetComponent<EnemyM>().Attack(1+ Objectpool.Instance.Player.GetComponent<Player>().power);
             }
-            /*else if (enemy.GetComponent<EnemyL>())
+            else if (enemy.GetComponent<EnemyL>())
             {
-                enemy.GetComponent<EnemyL>().Attack(1);
-            }*/
+                enemy.GetComponent<EnemyL>().Attack(1 + Objectpool.Instance.Player.GetComponent<Player>().power);
+            }
 
 
             Objectpool.Instance.ReturnObject(gameObject);

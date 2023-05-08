@@ -2787,6 +2787,7 @@ MonoBehaviour:
   - {fileID: 3017814586720814663, guid: 06cd03fe4d0e95544a2db2832929b92f, type: 3}
   - {fileID: 3017814586720814663, guid: a4d8ce5dc3811db47bbbdfd371aa6e9b, type: 3}
   - {fileID: 3017814586720814663, guid: 2b454e8a81d05ec4f97cd98eaec0b712, type: 3}
+  - {fileID: 7402507733685642226, guid: e09a82875c589e24db22adc45375eeaf, type: 3}
   bullet:
   - {fileID: 6639570510342838192, guid: 37b1be4b1ece88147b52ace9ed05b3ee, type: 3}
   - {fileID: 6767658462245151850, guid: e49134bc26e79a64a8a777aa5c3a742d, type: 3}

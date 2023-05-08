@@ -23,6 +23,7 @@ public class Objectpool : Singleton<Objectpool>
     Queue<Coin> Coinpools = new Queue<Coin>();
     Queue<Power> Powerpools = new Queue<Power>();
     Queue<Boom> Boompools = new Queue<Boom>();
+    Queue<Boss> Boss = new Queue<Boss>();
 
     public void Coinreturn(Coin obj)
     {
@@ -115,6 +116,7 @@ public class Objectpool : Singleton<Objectpool>
             Instance.EnmeybulleCreate();
         }
         GameObject obj = Enemybulletpools.Dequeue();
+        obj.SetActive(true);
         
         //obj.transform.position = obj.transform.parent.position;
         
@@ -206,6 +208,30 @@ public class Objectpool : Singleton<Objectpool>
         newobj.SetActive(true);
         return newobj;
     }
+
+    public void Bossreturn(GameObject obj)
+    {
+        obj.SetActive(false);
+        Boss.Enqueue(obj.GetComponent<Boss>());
+        
+    }
+
+    public GameObject BossCreate()
+    {
+        if(Boss.Count == 0)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject obj = Instantiate(Enemys[3], transform);
+                obj.SetActive(false);
+                Boss.Enqueue(obj.GetComponent<Boss>());
+            }
+        }
+        GameObject newobj = Boss.Dequeue().gameObject;
+        newobj.gameObject.SetActive(true);
+        return newobj.gameObject;
+    }
+
     //적 벽에 닿이면 반환
     public void Enemyreturn(GameObject obj)
     {

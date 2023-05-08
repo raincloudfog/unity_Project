@@ -57,22 +57,26 @@ public class enemysponer : MonoBehaviour
         j = -2;
         yield return new WaitForSeconds(5f);
         {
-            while (i < 3)
+            while (i < 2)
             {
                 GameObject obj = Objectpool.Instance.EnemyLObject();
                 obj.transform.position = new Vector3(j, transform.position.y, 0);
-                obj.GetComponent<Rigidbody2D>().velocity = new Vector2(0.51f ,-0.51f) * obj.GetComponent<EnemyL>().Speed;
-                if(obj.transform.position.x >= Camera.main.aspect)
+                obj.GetComponent<Rigidbody2D>().velocity = Vector2.down* obj.GetComponent<EnemyL>().Speed;
+                /*if(obj.transform.position.x >= Camera.main.aspect)
                 {
-                    obj.GetComponent<Rigidbody2D>().velocity = new Vector2(-0.51f, -0.51f) * obj.GetComponent<EnemyL>().Speed;
+                    obj.GetComponent<Rigidbody2D>().velocity = Vector2.down * obj.GetComponent<EnemyL>().Speed;
                     
-                }
+                }*/
                 turn = false;
-                j += 2;
+                j += 3;
                 i++;
             }
-            
-
+        }
+        yield return new WaitForSeconds(5f);
+        {
+            GameObject obj = Objectpool.Instance.BossCreate();
+            obj.transform.position = transform.position;
+            obj.GetComponent<Rigidbody2D>().velocity = Vector3.down * obj.GetComponent<Boss>().Speed;
         }
         
         
